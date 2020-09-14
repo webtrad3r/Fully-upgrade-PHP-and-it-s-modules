@@ -26,9 +26,9 @@ That’s it, you should now have an updated Ubuntu version!
 
 Please make sure to backup your data first as updates quite often fail!
 
-Now to upgrade your PHP Version to 7.3.
+Now to upgrade your PHP Version to 7.4.
 
-Upgrade PHP to 7.3
+Upgrade PHP to 7.4
 
 The first important thing to know is that you won’t be actually upgrading the PHP version but installing the newest one as well.
 
@@ -41,20 +41,26 @@ Next depending on your WebService - Nginx/Apache you have different steps.
 
 Let’s start with the Nginx requirements:
 
-sudo apt install php7.3-fpm
+sudo apt install php7.4-fpm
 To check this afterwards run
 
-php-fpm7.3 -v
+php-fpm7.4 -v
 Now if you are using Apache :
 
-sudo apt install php7.3
+sudo apt install php7.4
 Now that you have the PHP version, you’ll need to install some extensions. You can do it like so
 
-sudo apt install php7.3-extension_name
+sudo apt install php7.4-extension_name
 The most common extensions can be installed with the following command
 
-sudo apt install php7.3-common php7.3-mysql php7.3-xml php7.3-xmlrpc php7.3-curl php7.3-gd php7.3-imagick php7.3-cli php7.3-dev php7.3-imap php7.3-mbstring php7.3-opcache php7.3-soap php7.3-zip php7.3-intl -y
+sudo apt install php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl -y
 
 Install Apache2 inside /etc/php/7.4 folder as it was missing! :
 sudo apt-get install libapache2-mod-php7.4
+
+Disable old version of PHP and re-enable new version of PHP - mandatory - otherwise wordpress won't recognize the upgrade and it comes with alert messages on Site Health
+a2dismod php7.2
+a2enmod php7.4
+systemctl restart apache2
+
 That’s it.
